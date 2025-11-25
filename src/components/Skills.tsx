@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Code2, Smartphone, Palette, Database, Globe, Zap } from 'lucide-react';
+import { Code2, Smartphone, Palette, Database, Globe, Zap, } from 'lucide-react';
 
 export function Skills() {
   const skills = [
@@ -138,11 +138,11 @@ export function Skills() {
           className="text-center mb-16"
         >
           <h2 className="mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-3xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Habilidades e Especialidades
             </span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
             Um conjunto completo de ferramentas para criar aplicações web e mobile modernas
           </p>
         </motion.div>
@@ -184,7 +184,7 @@ export function Skills() {
           transition={{ delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <p className="text-slate-400 mb-6">Tecnologias com que trabalho</p>
+          <p className="text-slate-400 mb-6 text-lg">Tecnologias com que trabalho</p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             {technologies.map((tech, index) => (
               <motion.div

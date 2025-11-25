@@ -38,7 +38,7 @@ export function Navigation({ activeSection }: NavigationProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-lg font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               {'<Leonardo />'}
             </span>
           </motion.div>
@@ -52,13 +52,13 @@ export function Navigation({ activeSection }: NavigationProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-slate-300 hover:text-white transition-colors"
+                className="cursor-pointer text-lg relative text-slate-300 hover:text-white transition-colors"
               >
                 {item.label}
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500"
+                    className=" absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500"
                   />
                 )}
               </motion.button>
@@ -80,13 +80,13 @@ export function Navigation({ activeSection }: NavigationProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-slate-900 border-t border-slate-800"
+            className="cursor-pointer md:hidden bg-slate-900 border-t border-slate-800"
           >
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-6 py-4 hover:bg-slate-800 transition-colors ${
+                className={` block w-full text-left px-6 py-4 hover:bg-slate-800 transition-colors ${
                   activeSection === item.id ? 'text-cyan-400' : 'text-slate-300'
                 }`}
               >

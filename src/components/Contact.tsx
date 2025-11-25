@@ -1,6 +1,9 @@
 import { motion } from 'motion/react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
+import { useSendEmail } from '../api/send-email';
+import { ToastContainer, toast } from 'react-toastify';
+import { useToastNotify } from './toast-component';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -9,18 +12,26 @@ export function Contact() {
     message: '',
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { sendEmail, state, resetState } = useSendEmail()
+  const {success, error} = useToastNotify()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-      alert('Obrigado pela mensagem! Em breve retorno o contato.');
-    }, 2000);
+
+    // sendEmail(formData)
+
+    const status = {
+      status: "success",
+      message: "Recebido! Vou analisar sua ideia e te chamo em breve."
+    }
+
+    status.status === "success" ?  success(status.message) : error(status.message)
+    resetState()
+    setFormData({
+      name: '',
+      email: '',
+      message: '',
+    })
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,6 +49,9 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-32 px-6">
+      <ToastContainer 
+        className="min-w-[200px] w-[900px] max-w-[1800px]"
+      />
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,11 +61,11 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-3xl  font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Entre em contato
             </span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
             Tem um projeto em mente? Vamos trabalhar juntos para criar algo incrível
           </p>
         </motion.div>
@@ -63,10 +77,9 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="mb-6 text-white">Vamos falar sobre o seu projeto</h3>
-            <p className="text-slate-400 mb-8">
-              Estou sempre aberto a conhecer novos projetos e oportunidades.
-              Se tiver uma pergunta ou quiser apenas dizer oi, fique à vontade para me chamar!
+            <h3 className="mb-8 text-white text-xl font-semibold">Vamos falar sobre o seu projeto</h3>
+            <p className="text-slate-400 mb-8 text-lg">
+             Valorizo muito as conexões genuínas e estou sempre de portas abertas para conhecer novos projetos e oportunidades de crescimento mútuo. Não hesite em me mandar uma mensagem, seja para uma proposta de trabalho, uma dúvida rápida ou apenas para um café virtual. Vamos conversar?
             </p>
 
             <div className="space-y-6">
@@ -155,10 +168,10 @@ export function Contact() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              disabled={isSubmitting}
+              disabled={state.loading}
               className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? (
+              {state.loading ? (
                 <>
                   <motion.div
                     animate={{ rotate: 360 }}
@@ -176,7 +189,7 @@ export function Contact() {
             </motion.button>
           </motion.form>
         </div>
-
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

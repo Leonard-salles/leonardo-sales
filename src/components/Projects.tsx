@@ -45,11 +45,11 @@ export function Projects() {
           className="text-center mb-16"
         >
           <h2 className="mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-3xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Projetos em Destaque
             </span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
             Uma seleção recente que mostra minhas habilidades em diferentes tecnologias
           </p>
         </motion.div>

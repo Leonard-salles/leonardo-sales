@@ -20,11 +20,11 @@ export function About() {
           className="text-center mb-16"
         >
           <h2 className="mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-3xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Sobre mim
             </span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
             Apaixonado por criar experiências digitais excepcionais
           </p>
         </motion.div>
@@ -52,16 +52,6 @@ export function About() {
               ou compartilhando conhecimento com a comunidade. Acredito em código limpo, sustentável e em
               experiências que encantam.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
-
-            >
-              <a href="../../assets/curriculum.pdf" download="Leonaro Sales.pdf">
-                Baixar currículo
-              </a>
-            </motion.button>
           </motion.div>
 
           <motion.div
