@@ -2,21 +2,28 @@ import { motion } from 'motion/react';
 import { ExternalLink, Github } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
+import salonImage from "../../assets/projects-images/salon-image.jpg"
+import saturnix from "../../assets/projects-images/saturnix-pomodoro.png"
+
 export function Projects() {
   const projects = [
     {
-      title: 'Plataforma de E-commerce',
-      description: 'Uma solução full stack construída com React, TypeScript e Node.js. Conta com estoque em tempo real, integração de pagamentos e painel administrativo.',
-      image: 'https://images.unsplash.com/photo-1648260296289-ab882814a005?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXNpZ24lMjBwcm9qZWN0fGVufDF8fHx8MTc2NDAzMTk3MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-      gradient: 'from-cyan-400 to-blue-500',
+      title: 'Cila hair | Agendamentos',
+      description: 'Uma aplicação web completa desenvolvida com React, TypeScript e Vite, utilizando Firebase como backend serverless. Conta com calendário de reservas em tempo real, mapas dinâmicos integrados e uma experiência visual refinada com animações e componentes Shadcn/ui.',
+      image: salonImage,
+      tags: ['React', 'TypeScript', 'Shadcn', 'Firebase', 'leaflat', 'lottie'],
+      gradient: 'from-[#4B2E2B] to-[#A9746E]',
+      gitHubLink: "https://github.com/Leonard-salles/cila-hair/",
+      productionLink: "https://cila-hair.vercel.app/",
     },
     {
-      title: 'Aplicativo de Treinos',
-      description: 'App mobile em React Native para acompanhar treinos e nutrição. Solução multiplataforma com suporte offline e sincronização de dados.',
-      image: 'https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY0MDE2NDQ0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      tags: ['React Native', 'TypeScript', 'SQLite', 'Redux'],
-      gradient: 'from-purple-400 to-pink-500',
+      title: 'Saturnix pomodoro 🪐',
+      description: 'Uma aplicação web moderna desenvolvida com React 19 e TypeScript, focada em eficiência. Conta com processamento em segundo plano via Web Workers para garantir a exatidão do timer, transições fluídas e arquitetura otimizada.',
+      image: saturnix,
+      tags: ['React', 'React Native', 'TypeScript', 'Tailwind', 'Web Worker'],
+      gradient: 'from-[#065f46] to-[#363d56]',
+      gitHubLink: "https://github.com/Leonard-salles/saturnix-pomodoro",
+      productionLink: "https://saturnix-pomodoro.vercel.app/",
     },
     {
       title: 'Dashboard de Visualização de Dados',
@@ -88,7 +95,7 @@ export function Projects() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
-                  <h3 className="mb-4 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                  <h3 className="text-lg font-semibold mb-4 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
                     {project.title}
                   </h3>
                   <p className="text-slate-400 mb-6">{project.description}</p>
@@ -111,7 +118,12 @@ export function Projects() {
                       className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
                     >
                       <ExternalLink size={18} />
-                      Ver demo
+                      <motion.a
+                        href={project.productionLink}
+                        target='_blank'
+                      >
+                        Ver demo
+                      </motion.a> 
                     </motion.button>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -119,7 +131,12 @@ export function Projects() {
                       className="flex items-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors border border-slate-700"
                     >
                       <Github size={18} />
-                      Código
+                      <motion.a 
+                        href={project.gitHubLink}
+                        target='_blank'
+                      >
+                        Código
+                      </motion.a>
                     </motion.button>
                   </div>
                 </motion.div>
