@@ -15,10 +15,10 @@ export function Contact() {
   const { sendEmail, state, resetState } = useSendEmail()
   const {success, error} = useToastNotify()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
 
-    sendEmail(formData)
+    await sendEmail(formData)
 
     state.status === "success" ?  success(state.message) : error(state.message)
     resetState()
