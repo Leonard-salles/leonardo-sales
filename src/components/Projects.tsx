@@ -11,7 +11,7 @@ export function Projects() {
       title: 'Cila hair | Agendamentos',
       description: 'Uma aplicação web completa desenvolvida com React, TypeScript e Vite, utilizando Firebase como backend serverless. Conta com calendário de reservas em tempo real, mapas dinâmicos integrados e uma experiência visual refinada com animações e componentes Shadcn/ui.',
       image: salonImage,
-      tags: ['React', 'TypeScript', 'Shadcn', 'Firebase', 'leaflat', 'lottie'],
+      tags: ['React', 'TypeScript', 'Shadcn', 'Firebase', 'Leaflat', 'Lottie'],
       gradient: 'from-[#4B2E2B] to-[#A9746E]',
       gitHubLink: "https://github.com/Leonard-salles/cila-hair/",
       productionLink: "https://cila-hair.vercel.app/",
