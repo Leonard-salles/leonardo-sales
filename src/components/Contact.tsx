@@ -20,7 +20,9 @@ export function Contact() {
 
     await sendEmail(formData)
 
+    console.log(state)
     state.status === "success" ?  success(state.message) : error(state.message)
+    
     resetState()
     setFormData({
       name: '',
