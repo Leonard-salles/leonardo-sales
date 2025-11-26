@@ -47,7 +47,6 @@ export const useSendEmail = () => {
     const sendEmail = useCallback(async ({ name, email, message }: SendEmailProps) => {
         dispatch({ type: 'SEND_INIT' });
         try {
-            console.log("variables:", import.meta.env.VITE_EMAIL_KEY_SERVICE, import.meta.env.VITE_EMAIL_PUBLIC_KEY)
             if (!import.meta.env.VITE_EMAIL_KEY_SERVICE || !import.meta.env.VITE_EMAIL_PUBLIC_KEY) {
 
                 dispatch({ type: 'SEND_ERROR', payload: "Serviço indisponível temporariamente. Tente novamente em breve." })

@@ -18,14 +18,9 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // sendEmail(formData)
+    sendEmail(formData)
 
-    const status = {
-      status: "success",
-      message: "Recebido! Vou analisar sua ideia e te chamo em breve."
-    }
-
-    status.status === "success" ?  success(status.message) : error(status.message)
+    state.status === "success" ?  success(state.message) : error(state.message)
     resetState()
     setFormData({
       name: '',
