@@ -44,7 +44,7 @@ const sendEmailReducer = (state: EmailState, action: TypeAction): EmailState => 
 export const useSendEmail = () => {
     const [state, dispatch] = useReducer(sendEmailReducer, initialState);
 
-    const sendEmail = useCallback(async ({ name, email, message }: SendEmailProps) => {
+    const sendEmail = async ({ name, email, message }: SendEmailProps) => {
         dispatch({ type: 'SEND_INIT' });
         try {
             if (!import.meta.env.VITE_EMAIL_KEY_SERVICE || !import.meta.env.VITE_EMAIL_PUBLIC_KEY) {
@@ -74,7 +74,7 @@ export const useSendEmail = () => {
             
             dispatch({ type: 'SEND_ERROR', payload: errorMsg });
         }
-    }, []); 
+    }; 
 
     const resetState = useCallback(() => dispatch({ type: 'RESET' }), []);
 

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSendEmail } from '../api/send-email';
 import { ToastContainer, toast } from 'react-toastify';
 import { useToastNotify } from './toast-component';
@@ -19,17 +19,18 @@ export function Contact() {
     e.preventDefault();
 
     await sendEmail(formData)
-
-    console.log(state)
-    state.status === "success" ?  success(state.message) : error(state.message)
-    
-    resetState()
     setFormData({
       name: '',
       email: '',
       message: '',
     })
   };
+
+  useEffect(() => {
+    if(state.status){
+      state.status === "success" ?  success(state.message) : error(state.message)
+    }
+  }, [state])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
