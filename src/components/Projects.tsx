@@ -4,6 +4,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 
 import salonImage from "../../assets/projects-images/salon-image.jpg"
 import saturnix from "../../assets/projects-images/saturnix-pomodoro.png"
+import miniBlog from "../../assets/projects-images/mini_blog_image.png"
 
 export function Projects() {
   const projects = [
@@ -17,6 +18,14 @@ export function Projects() {
       productionLink: "https://cila-hair.vercel.app/",
     },
     {
+      title: 'Mini blog',
+      description: 'Uma plataforma de publicação dinâmica com atualização de dados em tempo real. Este projeto é um blog moderno de alta performance, desenvolvido para oferecer uma experiência de leitura e escrita fluida e instantânea. A arquitetura foi pensada para eliminar o carregamento de páginas (refreshes), tratando o conteúdo como um fluxo de dados vivo.',
+      image: miniBlog,
+      tags: ['React', 'Tailwind', 'Firebase', 'ReactQuery', 'Firebase', 'zustand'],
+      gradient: 'from-green-400 to-cyan-500',
+      productionLink: "https://mini-blog-steel-pi.vercel.app/",
+    },
+    {
       title: 'Saturnix pomodoro 🪐',
       description: 'Uma aplicação web moderna desenvolvida com React 19 e TypeScript, focada em eficiência. Conta com processamento em segundo plano via Web Workers para garantir a exatidão do timer, transições fluídas e arquitetura otimizada.',
       image: saturnix,
@@ -24,20 +33,6 @@ export function Projects() {
       gradient: 'from-[#065f46] to-[#363d56]',
       gitHubLink: "https://github.com/Leonard-salles/saturnix-pomodoro",
       productionLink: "https://saturnix-pomodoro.vercel.app/",
-    },
-    {
-      title: 'Dashboard de Visualização de Dados',
-      description: 'Dashboard analítico interativo com processamento em tempo real usando backend em Python e frontend em React. Inclui gráficos customizados e exportações.',
-      image: 'https://images.unsplash.com/photo-1604781109199-ced99b89b0f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYzOTc4ODQzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      tags: ['React', 'Python', 'D3.js', 'FastAPI'],
-      gradient: 'from-green-400 to-cyan-500',
-    },
-    {
-      title: 'Dashboard de Visualização de Dados',
-      description: 'Dashboard analítico interativo com processamento em tempo real usando backend em Python e frontend em React. Inclui gráficos customizados e exportações.',
-      image: 'https://images.unsplash.com/photo-1604781109199-ced99b89b0f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYzOTc4ODQzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      tags: ['React', 'Python', 'D3.js', 'FastAPI'],
-      gradient: 'from-green-400 to-cyan-500',
     },
   ];
 
