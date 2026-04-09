@@ -25,15 +25,15 @@ export function Projects() {
       gradient: 'from-green-400 to-cyan-500',
       productionLink: "https://mini-blog-steel-pi.vercel.app/",
     },
-    {
-      title: 'Saturnix pomodoro 🪐',
-      description: 'Uma aplicação web moderna desenvolvida com React 19 e TypeScript, focada em eficiência. Conta com processamento em segundo plano via Web Workers para garantir a exatidão do timer, transições fluídas e arquitetura otimizada.',
-      image: saturnix,
-      tags: ['React', 'React Native', 'TypeScript', 'Tailwind', 'Web Worker'],
-      gradient: 'from-[#065f46] to-[#363d56]',
-      gitHubLink: "https://github.com/Leonard-salles/saturnix-pomodoro",
-      productionLink: "https://saturnix-pomodoro.vercel.app/",
-    },
+    // {
+    //   title: 'Saturnix pomodoro 🪐',
+    //   description: 'Uma aplicação web moderna desenvolvida com React 19 e TypeScript, focada em eficiência. Conta com processamento em segundo plano via Web Workers para garantir a exatidão do timer, transições fluídas e arquitetura otimizada.',
+    //   image: saturnix,
+    //   tags: ['React', 'React Native', 'TypeScript', 'Tailwind', 'Web Worker'],
+    //   gradient: 'from-[#065f46] to-[#363d56]',
+    //   gitHubLink: "https://github.com/Leonard-salles/saturnix-pomodoro",
+    //   productionLink: "https://saturnix-pomodoro.vercel.app/",
+    // },
   ];
 
   return (
