@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { LanguageToggle } from './LanguageToggle';
 
 interface NavigationProps {
   activeSection: string;
@@ -8,14 +10,8 @@ interface NavigationProps {
 
 export function Navigation({ activeSection }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    { id: 'home', label: 'Início' },
-    { id: 'skills', label: 'Habilidades' },
-    { id: 'projects', label: 'Projetos' },
-    { id: 'about', label: 'Sobre' },
-    { id: 'contact', label: 'Contato' },
-  ];
+  const { t } = useLanguage();
+  const navItems = t.nav.items;
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -26,7 +22,7 @@ export function Navigation({ activeSection }: NavigationProps) {
   };
 
   return (
-    <>
+    <header>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -63,20 +59,28 @@ export function Navigation({ activeSection }: NavigationProps) {
                 )}
               </motion.button>
             ))}
+            <LanguageToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <LanguageToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-3 -m-3 text-white"
+              aria-label={isOpen ? t.nav.mobileMenuClose : t.nav.mobileMenuOpen}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav-menu"
+            >
+              {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
           <motion.div
+            id="mobile-nav-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -96,6 +100,6 @@ export function Navigation({ activeSection }: NavigationProps) {
           </motion.div>
         )}
       </motion.nav>
-    </>
+    </header>
   );
 }

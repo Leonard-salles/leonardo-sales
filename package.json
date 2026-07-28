@@ -35,6 +35,8 @@
             "clsx": "*",
             "cmdk": "^1.1.1",
             "embla-carousel-react": "^8.6.0",
+            "firebase": "^12.16.0",
+            "gsap": "^3.15.0",
             "input-otp": "^1.4.2",
             "lucide-react": "^0.487.0",
             "motion": "*",
@@ -49,12 +51,14 @@
             "sonner": "^2.0.3",
             "tailwind-merge": "*",
             "tailwindcss": "^4.1.17",
+            "three": "^0.185.1",
             "vaul": "^1.1.2"
       },
       "devDependencies": {
             "@types/node": "^20.10.0",
             "@types/react": "^19.2.7",
             "@types/react-dom": "^19.2.3",
+            "@types/three": "^0.185.1",
             "@vitejs/plugin-react-swc": "^3.10.2",
             "vite": "6.3.5"
       },

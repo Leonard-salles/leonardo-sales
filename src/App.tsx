@@ -1,47 +1,61 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Hero } from './components/Hero';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Navigation } from './components/Navigation';
+import { Footer } from './components/Footer';
+import { TestimonialModalProvider } from './components/testimonials/TestimonialModalContext';
+import { TestimonialFormModal } from './components/testimonials/TestimonialFormModal';
+import { FeedbackWidget } from './components/testimonials/FeedbackWidget';
+
+const Testimonials = lazy(() => import('./components/testimonials/Testimonials'));
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'skills', 'projects', 'about', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+    const sectionIds = ['home', 'skills', 'projects', 'testimonials', 'about', 'contact'];
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetBottom = offsetTop + element.offsetHeight;
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveSection(section);
-            break;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
           }
-        }
-      }
-    };
+        });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
+  const pastHero = activeSection !== 'home';
+
   return (
-    <div className="bg-slate-950 text-white min-h-screen">
-      <Navigation activeSection={activeSection} />
-      <main>
-        <Hero />
-        <Skills />
-        <Projects />
-        <About />
-        <Contact />
-      </main>
-    </div>
+    <TestimonialModalProvider>
+      <div className="bg-slate-950 text-white min-h-screen">
+        <Navigation activeSection={activeSection} />
+        <main>
+          <Hero />
+          <Skills />
+          <Projects />
+          <Suspense fallback={null}>
+            <Testimonials />
+          </Suspense>
+          <About />
+          <Contact />
+        </main>
+        <Footer />
+        <FeedbackWidget pastHero={pastHero} />
+        <TestimonialFormModal />
+      </div>
+    </TestimonialModalProvider>
   );
 }

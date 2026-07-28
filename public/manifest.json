@@ -1,0 +1,17 @@
+{
+  "name": "Leonardo Sales | FullStack Developer",
+  "short_name": "Leonardo Sales",
+  "description": "Portfólio de Leonardo Sales, desenvolvedor full stack especializado em React, TypeScript e experiências digitais de alta performance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#22d3ee",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
