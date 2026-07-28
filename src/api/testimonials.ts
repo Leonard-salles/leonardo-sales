@@ -1,7 +1,37 @@
 import { useEffect, useReducer, useState } from 'react';
 import { collection, doc, getDocs, orderBy, query, serverTimestamp, where, writeBatch } from 'firebase/firestore';
+import emailjs from '@emailjs/browser';
 import { db } from '../lib/firebase';
 import { normalizeAndHashEmail } from '../utils/hashEmail';
+
+// Best-effort owner notification, reusing the same EmailJS service/template
+// already configured for the contact form. Never blocks or fails the
+// testimonial submission itself — the testimonial is already saved in
+// Firestore by the time this runs, so a notification failure is just logged.
+function notifyOwnerOfNewTestimonial(input: { name: string; email: string; message: string; rating: number; website: string }) {
+  if (!import.meta.env.VITE_EMAIL_KEY_SERVICE || !import.meta.env.VITE_EMAIL_PUBLIC_KEY) return;
+
+  const summary = [
+    '[Novo depoimento recebido no site]',
+    `Avaliação: ${input.rating}/5`,
+    input.website ? `Site: ${input.website}` : null,
+    '',
+    input.message,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  emailjs
+    .send(
+      import.meta.env.VITE_EMAIL_KEY_SERVICE,
+      import.meta.env.VITE_EMAIL_KEY_TEMPLATE,
+      { user_name: input.name, user_email: input.email, message: summary },
+      import.meta.env.VITE_EMAIL_PUBLIC_KEY
+    )
+    .catch((err) => {
+      console.error('Failed to send testimonial notification email:', err);
+    });
+}
 
 export interface Testimonial {
   id: string;
@@ -134,6 +164,7 @@ export function useSubmitTestimonial() {
       });
 
       await batch.commit();
+      notifyOwnerOfNewTestimonial({ name: name.trim(), email: email.trim(), message: message.trim(), rating, website: trimmedWebsite });
       dispatch({ type: 'SUCCESS', payload: 'pendingReview' });
     } catch (error) {
       const code: SubmitResultCode =

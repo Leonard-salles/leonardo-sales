@@ -100,7 +100,7 @@ export function Testimonials() {
         </div>
 
         {displayItems.length > 3 ? (
-          <div className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory pb-4 -mx-6 px-6 [scrollbar-width:thin]">
+          <div className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory pb-4 -mx-6 px-6 [scrollbar-width:thin] [touch-action:pan-x]">
             {displayItems.map((testimonial) => (
               <div key={testimonial.id} className="w-80 sm:w-96 flex-shrink-0 snap-start">
                 <TestimonialCard
