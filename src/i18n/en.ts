@@ -101,6 +101,29 @@ export const en: Translation = {
     submitIdle: 'Submit testimonial',
     submitLoading: 'Submitting...',
     visitWebsite: "Visit {name}'s website",
+    seed: [
+      {
+        name: 'Marina Costa',
+        message:
+          "Leonardo delivered our startup's internal dashboard ahead of schedule, with great care for the user experience. He translated our business requirements into fast, intuitive screens really well.",
+        rating: 5,
+        website: null,
+      },
+      {
+        name: 'Rafael Andrade',
+        message:
+          "We hired Leonardo to modernize our clinic's mobile app. React Native ended up rock-solid on both iOS and Android, and he even suggested flow improvements we hadn't considered.",
+        rating: 5,
+        website: 'https://clinicavitanova.com.br',
+      },
+      {
+        name: 'Juliana Prado',
+        message:
+          'We worked together on Figma prototyping and then the e-commerce implementation. Communication was excellent from start to finish, and the site ended up much faster than the previous version.',
+        rating: 4,
+        website: null,
+      },
+    ],
     toast: {
       pendingReview: "Thank you! Your testimonial was received and will be published after a brief review.",
       duplicate: 'This email has already submitted a testimonial.',

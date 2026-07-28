@@ -85,6 +85,13 @@ export interface FooterTranslation {
   madeWith: string;
 }
 
+export interface TestimonialSeedTranslation {
+  name: string;
+  message: string;
+  rating: number;
+  website: string | null;
+}
+
 export interface TestimonialsTranslation {
   heading: string;
   subheading: string;
@@ -105,6 +112,7 @@ export interface TestimonialsTranslation {
   submitIdle: string;
   submitLoading: string;
   visitWebsite: string;
+  seed: TestimonialSeedTranslation[];
   toast: {
     pendingReview: string;
     duplicate: string;

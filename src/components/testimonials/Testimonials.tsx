@@ -68,7 +68,20 @@ function TestimonialCard({
 
 export function Testimonials() {
   const { t } = useLanguage();
-  const { items } = useTestimonials();
+  const { items, loading, error } = useTestimonials();
+
+  // Safety net: if the real Firestore fetch comes back empty or errors out
+  // (missing env vars, index still propagating, network issues, etc.), fall
+  // back to a small set of static testimonials so the section is never blank.
+  // Never shown alongside real data — only when there truly is none yet.
+  const fallbackItems: Testimonial[] = t.testimonials.seed.map((s, i) => ({
+    id: `fallback-${i + 1}`,
+    name: s.name,
+    message: s.message,
+    website: s.website,
+    rating: s.rating,
+  }));
+  const displayItems = !loading && (items.length === 0 || error) ? fallbackItems : items;
 
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollReveal(sectionRef, { targets: '[data-reveal-header]', y: 20, duration: 0.5 });
@@ -86,9 +99,9 @@ export function Testimonials() {
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">{t.testimonials.subheading}</p>
         </div>
 
-        {items.length > 3 ? (
+        {displayItems.length > 3 ? (
           <div className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory pb-4 -mx-6 px-6 [scrollbar-width:thin]">
-            {items.map((testimonial) => (
+            {displayItems.map((testimonial) => (
               <div key={testimonial.id} className="w-80 sm:w-96 flex-shrink-0 snap-start">
                 <TestimonialCard
                   testimonial={testimonial}
@@ -100,7 +113,7 @@ export function Testimonials() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((testimonial) => (
+            {displayItems.map((testimonial) => (
               <TestimonialCard
                 key={testimonial.id}
                 testimonial={testimonial}

@@ -101,6 +101,29 @@ export const pt: Translation = {
     submitIdle: 'Enviar depoimento',
     submitLoading: 'Enviando...',
     visitWebsite: 'Visitar o site de {name}',
+    seed: [
+      {
+        name: 'Marina Costa',
+        message:
+          'Leonardo entregou o dashboard interno da nossa startup antes do prazo, com um cuidado enorme na experiência do usuário. Traduziu muito bem os requisitos de negócio em telas rápidas e intuitivas.',
+        rating: 5,
+        website: null,
+      },
+      {
+        name: 'Rafael Andrade',
+        message:
+          'Contratamos o Leonardo para modernizar o app mobile da nossa clínica. O React Native ficou estável em iOS e Android, e ele ainda sugeriu melhorias de fluxo que não tínhamos pensado.',
+        rating: 5,
+        website: 'https://clinicavitanova.com.br',
+      },
+      {
+        name: 'Juliana Prado',
+        message:
+          'Trabalhamos juntos na prototipação no Figma e depois na implementação do e-commerce. A comunicação foi excelente do início ao fim, e o site ficou muito mais rápido que a versão anterior.',
+        rating: 4,
+        website: null,
+      },
+    ],
     toast: {
       pendingReview: 'Obrigado! Seu depoimento foi recebido e será publicado após uma breve revisão.',
       duplicate: 'Esse e-mail já enviou um depoimento anteriormente.',
