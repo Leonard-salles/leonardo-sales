@@ -45,17 +45,17 @@ function TestimonialFormModalContent() {
     <>
       <ToastContainer className="min-w-[200px] w-[calc(100vw-2rem)] sm:w-[500px] lg:w-[900px] max-w-[1800px]" />
       <Dialog open={isOpen} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-white sm:max-w-lg rounded-xl p-6 sm:p-8">
+        <DialogContent className="bg-slate-900 border-slate-700 text-white sm:max-w-lg rounded-xl p-4 gap-3 sm:p-8 sm:gap-4">
           <DialogHeader>
-            <DialogTitle className="text-white text-xl font-semibold text-center">
+            <DialogTitle className="text-white text-lg sm:text-xl font-semibold text-center">
               {t.testimonials.formHeading}
             </DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label htmlFor="testimonial-name" className="block text-slate-300 mb-2">
+                <label htmlFor="testimonial-name" className="block text-slate-300 text-sm sm:text-base mb-1.5 sm:mb-2">
                   {t.testimonials.nameLabel}
                 </label>
                 <input
@@ -65,12 +65,12 @@ function TestimonialFormModalContent() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                  className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
                   placeholder={t.testimonials.namePlaceholder}
                 />
               </div>
               <div>
-                <label htmlFor="testimonial-email" className="block text-slate-300 mb-2">
+                <label htmlFor="testimonial-email" className="block text-slate-300 text-sm sm:text-base mb-1.5 sm:mb-2">
                   {t.testimonials.emailLabel}
                 </label>
                 <input
@@ -80,15 +80,15 @@ function TestimonialFormModalContent() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                  className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
                   placeholder={t.testimonials.emailPlaceholder}
                 />
-                <p className="text-slate-500 text-sm mt-1">{t.testimonials.emailHelper}</p>
+                <p className="text-slate-500 text-xs sm:text-sm mt-1">{t.testimonials.emailHelper}</p>
               </div>
             </div>
 
             <div>
-              <label htmlFor="testimonial-message" className="block text-slate-300 mb-2">
+              <label htmlFor="testimonial-message" className="block text-slate-300 text-sm sm:text-base mb-1.5 sm:mb-2">
                 {t.testimonials.messageLabel}
               </label>
               <textarea
@@ -97,14 +97,14 @@ function TestimonialFormModalContent() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={4}
-                className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+                rows={3}
+                className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
                 placeholder={t.testimonials.messagePlaceholder}
               />
             </div>
 
             <div>
-              <label htmlFor="testimonial-website" className="block text-slate-300 mb-2">
+              <label htmlFor="testimonial-website" className="block text-slate-300 text-sm sm:text-base mb-1.5 sm:mb-2">
                 {t.testimonials.websiteLabel}
               </label>
               <input
@@ -113,18 +113,18 @@ function TestimonialFormModalContent() {
                 name="website"
                 value={formData.website}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
                 placeholder={t.testimonials.websitePlaceholder}
               />
             </div>
 
             <div>
-              <p className="block text-slate-300 mb-2">{t.testimonials.ratingLabel}</p>
+              <p className="block text-slate-300 text-sm sm:text-base mb-1.5 sm:mb-2">{t.testimonials.ratingLabel}</p>
               <StarRating
                 value={rating}
                 onChange={setRating}
                 interactive
-                size={28}
+                size={24}
                 rateLabel={(n) => t.testimonials.rateStarAria.replace('{n}', String(n))}
                 ratingLabel={(n) => t.testimonials.ratingValueAria.replace('{n}', String(n))}
               />
@@ -135,7 +135,7 @@ function TestimonialFormModalContent() {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={state.loading}
-              className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {state.loading ? (
                 <>
