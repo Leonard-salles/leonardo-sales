@@ -77,6 +77,11 @@ export const en: Translation = {
         description:
           'Real-time publishing platform designed to eliminate page reloads and deliver an instant reading and writing experience — architected around content as a live data stream.',
       },
+      {
+        title: '3D Magic Cube',
+        description:
+          "A fully 3D Rubik's Cube rendered with Three.js — rotate it and view it from every angle with smooth, realistic movement. Playable straight from the browser, no install needed: the puzzle logic is built in TypeScript and vanilla JavaScript with a React-powered interface.",
+      },
     ],
     ctaDemo: 'View demo',
     ctaCode: 'Code',

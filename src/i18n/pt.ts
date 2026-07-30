@@ -77,6 +77,11 @@ export const pt: Translation = {
         description:
           'Plataforma de publicação em tempo real, pensada para eliminar recarregamentos de página e entregar uma experiência de leitura e escrita instantânea — arquitetura tratada como um fluxo de dados vivo.',
       },
+      {
+        title: 'Cubo Mágico 3D',
+        description:
+          'Um cubo mágico totalmente em 3D, renderizado com Three.js — gire e veja-o de qualquer ângulo com movimento suave e realista. Jogável direto do navegador, sem instalação: a lógica do quebra-cabeça foi construída em TypeScript e JavaScript puro, com interface em React.',
+      },
     ],
     ctaDemo: 'Ver demo',
     ctaCode: 'Código',

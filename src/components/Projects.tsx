@@ -7,6 +7,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 import salonImage from "../../assets/projects-images/salon-image.jpg"
 import miniBlog from "../../assets/projects-images/mini_blog_image.png"
+import cubeSite from "../../assets/projects-images/cube-site-image.png"
 
 const projectLinks = [
   {
@@ -21,6 +22,13 @@ const projectLinks = [
     tags: ['React', 'Tailwind', 'Firebase', 'ReactQuery', 'zustand'],
     gradient: 'from-green-400 to-cyan-500',
     productionLink: "https://mini-blog-steel-pi.vercel.app/",
+  },
+  {
+    image: cubeSite,
+    tags: ['Three.js', 'React', 'TypeScript', 'JavaScript Vanilla', 'WebGL'],
+    gradient: 'from-purple-500 via-pink-500 to-orange-400',
+    gitHubLink: "https://github.com/Leonard-salles/magic_cube_3d",
+    productionLink: "https://magic-cube-3d-one.vercel.app/",
   },
 ];
 
